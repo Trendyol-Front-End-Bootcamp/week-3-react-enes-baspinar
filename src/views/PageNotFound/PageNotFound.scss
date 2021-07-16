@@ -1,0 +1,39 @@
+.not-found-content {
+  position: relative;
+  height: calc(100vh - 70px); 
+
+  & > img {
+    position: absolute;
+    height:300px;
+    bottom: 0px;
+    left: 30px;
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  &__main {
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    h2 {
+      font-size: 20rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    a {
+      color: green;
+
+      &:hover {
+        color: darkgreen;
+        border-bottom: 3px solid;
+      }
+    }
+  }
+}

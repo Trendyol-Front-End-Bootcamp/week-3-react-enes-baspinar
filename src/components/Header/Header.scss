@@ -1,0 +1,63 @@
+/*
+  ========================================
+  Page Header
+  ========================================
+*/
+
+.header {
+  border-bottom: 1px solid var(--header-bottom-color);
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  height: 70px;
+  padding: 5px;
+
+  &__content {
+    display: flex;
+    padding-left: 20px;
+  }
+
+  &__logo {
+    height: 55px;
+  }
+
+  &__navigation {
+    font-size: 1.1rem;
+
+    ul {
+      display: flex;
+
+      li {
+        margin: 0 5px;
+
+        &:not(:last-child)::after {
+          content: '/';
+          padding: 0 0 0 0.5rem;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  &__author {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__socials {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+
+    li {
+      font-size: 1.4rem;
+      margin: 0 5px;
+      line-height: 1.4rem;
+
+      svg {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+}

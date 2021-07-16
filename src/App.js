@@ -1,26 +1,37 @@
 import "./App.scss";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-import Character from "./views/Character/Character";
-import Characters from "./views/Characters/Characters";
+import PageNotFound from "./views/PageNotFound/PageNotFound";
 import Header from "./components/Header/Header";
-import PageNotFound from "./components/PageNotFound/PageNotFound";
+import CharacterPage from "./views/CharacterPage/CharacterPage";
+import CharactersPage from "./views/CharactersPage/CharactersPage";
 
 function App() {
+  const [apiUrl, setApiUrl] = useState(
+    "https://rickandmortyapi.com/api/character/"
+  );
+  const [characterList, setCharacterList] = useState([]);
+
+  useEffect(() => {
+    fetch(apiUrl)
+      .then((response) => response.json())
+      .then((data) => setCharacterList(data.results));
+  }, [apiUrl]);
+
   return (
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/character/:name">
-          <Character />
+        <Route exact path="/characters/:name">
+          <CharacterPage />
         </Route>
-        <Route path="/characters/">
-          <Characters />
+        <Route exact path="/characters/">
+          <CharactersPage characterList={characterList} setApiUrl={setApiUrl} />
         </Route>
         <Route path="/404">
           <PageNotFound />

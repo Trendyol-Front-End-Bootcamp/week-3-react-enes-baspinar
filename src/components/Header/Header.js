@@ -1,85 +1,57 @@
 import "./Header.scss";
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaLinkedin, FaGithub, FaTwitter, FaGlobe } from "react-icons/fa";
+import Logo from "../../assets/logo.png";
 
 function Header() {
   return (
-    <header className="page-header">
+    <header className="header">
       {/* Header Content - Start */}
-      <div className="page-header__content">
+      <div className="header__content">
         {/* Logo - Start */}
         <Link to="/">
-          <img src="" alt="" className="page-header__logo" />
+          <img src={Logo} alt="logo" className="header__logo" height="55" />
         </Link>
         {/* Logo - End */}
-        {/* Navigation - Start */}
-        <nav className="page-header__navigation">
-          <ul className="page-header__links">
-            {/* Navigation Item - Start */}
-            <li className="page-header__link">
-              <NavLink to="/characters">Characters</NavLink>
-            </li>
-            {/* Navigation Item - End */}
-            {/* Navigation Item - Start */}
-            <li className="page-header__link">
-              <NavLink to="/character/enes">Enes</NavLink>
-            </li>
-            {/* Navigation Item - End */}
-          </ul>
-        </nav>
-        {/* Navigation - End */}
       </div>
       {/* Header Content - End */}
       {/* Author Info - Start */}
-      <div className="page-header__author">
-        Enes Başpınar
+      <div className="header__author">
         {/* Socials - Start */}
-        <ul className="page-header__socials">
+        <ul className="header__socials">
           {/* Social - Start */}
-          <li className="page-header__social">
+          <li>
             {/* Social Link - Start */}
-            <a
-              href="https://www.linkedin.com/in/enesbaspinar"
-              className="page-header__social-link"
-            >
-              <FaLinkedin className="page-header__social-icon" />
+            <a href="https://www.linkedin.com/in/enesbaspinar" target="__blank">
+              <FaLinkedin className="header__social-icon" />
             </a>
             {/* Social Link - End */}
           </li>
           {/* Social - End */}
           {/* Social - Start */}
-          <li className="page-header__social">
+          <li>
             {/* Social Link - Start */}
-            <a
-              href="https://github.com/baspinarenes"
-              className="page-header__social-link"
-            >
-              <FaGithub className="page-header__social-icon" />
+            <a href="https://github.com/baspinarenes">
+              <FaGithub className="header__social-icon" />
             </a>
             {/* Social Link - End */}
           </li>
           {/* Social - End */}
           {/* Social - Start */}
-          <li className="page-header__social">
+          <li>
             {/* Social Link - Start */}
-            <a
-              href="https://twitter.com/enesbaspinar0"
-              className="page-header__social-link"
-            >
-              <FaTwitter className="page-header__social-icon" />
+            <a href="https://twitter.com/enesbaspinar0">
+              <FaTwitter className="header__social-icon" />
             </a>
             {/* Social Link - End */}
           </li>
           {/* Social - End */}
           {/* Social - Start */}
-          <li className="page-header__social">
+          <li>
             {/* Social Link - Start */}
-            <a
-              href="http://enesbaspinar.me/"
-              className="page-header__social-link"
-            >
-              <FaGlobe className="page-header__social-icon" />
+            <a href="http://enesbaspinar.me/">
+              <FaGlobe className="header__social-icon" />
             </a>
             {/* Social Link - End */}
           </li>
