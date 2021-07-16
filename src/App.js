@@ -27,9 +27,13 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route exact path="/characters/:name">
-          <CharacterPage />
-        </Route>
+        <Route
+          exact
+          path="/characters/:name"
+          render={(props) => (
+            <CharacterPage {...props} characterList={characterList} />
+          )}
+        />
         <Route exact path="/characters/">
           <CharactersPage characterList={characterList} setApiUrl={setApiUrl} />
         </Route>

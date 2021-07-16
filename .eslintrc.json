@@ -21,6 +21,8 @@
         "prettier/prettier": "error",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
         "react/prop-types": "off",
-        "no-unused-vars": "off"
+        "no-unused-vars": "off",
+        "no-console": "off",
+        "react/jsx-props-no-spreading": "off"
     }
 }

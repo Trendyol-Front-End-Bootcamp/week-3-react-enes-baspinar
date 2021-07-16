@@ -17,6 +17,7 @@
     top: calc((100vh - 430px) / 2);
     left: 100px;
     border-radius: 50%;
+    z-index: 2;
   }
 
   &__title-section {
@@ -24,9 +25,20 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: flex-end;
-
+    position: relative;
+  
     & > h2 {
       font-size: 6.5rem;
+    }
+
+    & > a {
+      position: absolute;
+      top: 20px;
+      right: 135px;
+
+      display: flex;
+      align-items: center;
+      gap: 5px;
     }
   }
 
@@ -39,7 +51,7 @@
   &__infos {
     padding: 30px 10px 10px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 33%);
     grid-template-rows: 100px 100px;
 
     & > h3 {
@@ -48,7 +60,13 @@
   }
 
   &__info {
-    
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+
+    &:last-child {
+      grid-column: 2 / span 2;
+    }
+
     & > h4 {
       margin: 0;
       font-weight: bold;
