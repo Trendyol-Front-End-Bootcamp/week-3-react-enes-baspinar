@@ -12,21 +12,20 @@ import CharacterPage from "./views/CharacterPage/CharacterPage";
 import CharactersPage from "./views/CharactersPage/CharactersPage";
 
 function App() {
-  const [apiUrl, setApiUrl] = useState(
-    "https://rickandmortyapi.com/api/character/"
-  );
-
   const [characterList, setCharacterList] = useState([]);
   const [characterCount, setCharacterCount] = useState(0);
   const [page, setPage] = React.useState(0);
+  const [apiUrl, setApiUrl] = useState(
+    `https://rickandmortyapi.com/api/character/`
+  );
 
   // Fetch characters from Rick and Morty api
   useEffect(() => {
-    fetch(apiUrl)
+    fetch(`${apiUrl}?page=${page}`)
       .then((response) => response.json())
       .then((data) => {
         setCharacterList(data.results);
-        setCharacterCount(data.count);
+        setCharacterCount(data.info.count);
       });
   }, [apiUrl]);
 
@@ -51,7 +50,7 @@ function App() {
         />
         {/* Character Page Route - End */}
         {/* Characters Page Route - Start */}
-        <Route exact path="/characters/">
+        <Route exact path="/characters">
           <CharactersPage
             characterList={characterList}
             setApiUrl={setApiUrl}
