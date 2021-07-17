@@ -8,13 +8,16 @@ import {
 } from "react-router-dom";
 import TablePagination from "@material-ui/core/TablePagination";
 
-function Pagination({ setApiUrl, page, setPage, characterCount }) {
+function Pagination({ setApiUrl, characterCount }) {
+  const [page, setPage] = React.useState(0);
+
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
-    console.log(newPage);
-    setApiUrl(`https://rickandmortyapi.com/api/character/?page=${newPage + 1}`);
+    setApiUrl(
+      `https://rickandmortyapi.com/api/character/?page=${newPage + 1 || ""}`
+    );
   };
-  console.log(characterCount);
+
   return (
     <TablePagination
       component="div"

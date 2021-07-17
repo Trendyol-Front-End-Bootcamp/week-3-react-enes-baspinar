@@ -1,7 +1,7 @@
 import "./FilterSection.scss";
 import React, { useState, useEffect } from "react";
 
-function FilterSection({ setApiUrl }) {
+function FilterSection({ apiUrl, setApiUrl }) {
   const [filters, setFilters] = useState({
     name: "",
     species: "",
@@ -11,13 +11,13 @@ function FilterSection({ setApiUrl }) {
   });
 
   useEffect(() => {
-    setApiUrl(`
-    https://rickandmortyapi.com/api/character/?name=${
-      filters.name || ""
-    }&status=${filters.status || ""}&species=${filters.species || ""}&type=${
-      filters.type || ""
-    }&gender=${filters.gender || ""}
-    `);
+    setApiUrl(
+      `https://rickandmortyapi.com/api/character/?name=${
+        filters.name || ""
+      }&status=${filters.status || ""}&species=${filters.species || ""}&type=${
+        filters.type || ""
+      }&gender=${filters.gender || ""}`
+    );
   }, [filters]);
 
   const handleFormChange = (e) => {

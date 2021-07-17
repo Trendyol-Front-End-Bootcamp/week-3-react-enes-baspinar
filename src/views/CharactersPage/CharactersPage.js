@@ -9,6 +9,7 @@ import EmptyListCaps from "../../assets/empty-list-caps.png";
 
 function CharactersPage({
   characterList,
+  apiUrl,
   setApiUrl,
   characterCount,
   page,
@@ -16,7 +17,9 @@ function CharactersPage({
 }) {
   let pageCaps = null;
 
-  if (characterList === [] || characterList === undefined) {
+  console.log("asas", characterList);
+
+  if (!characterList.length) {
     pageCaps = EmptyListCaps;
   } else if (characterList.length === 20) {
     pageCaps = FullListCaps;
@@ -27,7 +30,7 @@ function CharactersPage({
   return (
     <main className="characters-content">
       <aside>
-        <FilterSection setApiUrl={setApiUrl} />
+        <FilterSection apiUrl={apiUrl} setApiUrl={setApiUrl} />
         <img className="characters-content__caps" src={pageCaps} alt="" />
       </aside>
       <section className="characters-content__characters-section">
@@ -41,7 +44,7 @@ function CharactersPage({
           />
         </div>
         <ul className="characters-content__characters">
-          {!characterList ? (
+          {!characterList.length ? (
             <div>The character was not found.</div>
           ) : (
             characterList.map((character) => (
