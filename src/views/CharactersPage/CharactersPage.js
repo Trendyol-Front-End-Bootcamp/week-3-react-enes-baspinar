@@ -17,8 +17,6 @@ function CharactersPage({
 }) {
   let pageCaps = null;
 
-  console.log("asas", characterList);
-
   if (!characterList.length) {
     pageCaps = EmptyListCaps;
   } else if (characterList.length === 20) {
