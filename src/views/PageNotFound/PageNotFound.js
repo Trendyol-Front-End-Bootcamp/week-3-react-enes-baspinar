@@ -12,7 +12,7 @@ function PageNotFound() {
         <p>
           You are lost in the world of Rick and Morty!
           <br />
-          <Link to="/"> Return to a familiar place.</Link>
+          <Link to="/"> Return to the familiar place.</Link>
         </p>
       </div>
     </main>

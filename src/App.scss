@@ -21,7 +21,20 @@
 */
 
 :root {
-  --header-bottom-color: rgba(0, 0, 0, 0.1); 
+  --gradient-blue: #22A2BD;
+  --gradient-green: #7DFF48;
+  --guyabano-color: rgb(248, 248, 248);
+  --lighter-gray: #F0F0F0;
+  --lighter-gray2: rgba(0, 0, 0, 0.05);
+  --light-gray: rgba(0, 0, 0, 0.1);
+  --gray: rgba(0, 0, 0, 0.3);
+  --white: #FFF;
+
+  --content-background: var(--guyabano-color);
+  --border: var(--light-gray);
+  --info-title: var(--gray);
+  --scrollbar-thumb: var(--lighter-gray);
+  --character-card-hover: var(--lighter-gray2);
 }
 
 /*

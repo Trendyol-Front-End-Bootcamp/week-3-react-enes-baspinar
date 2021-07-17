@@ -1,92 +1,86 @@
 /*
   ========================================
-  Content Container
+  Characters Page Container
   ========================================
 */
 
 .characters-content {
-  background-color: rgb(248, 248, 248);
+  background-color: var(--content-background);
   display: grid;
-  grid-template-columns: 300px 1fr;
   gap: 50px;
+  grid-template-columns: 300px 1fr;
   height: calc(100vh - 70px); // Full height - header height
-  padding: 10px 30px;
+  padding: 10px 90px 10px;
 
-  &__caps-container {
+  /*
+    ========================================
+    Rick and Morty Caps
+    ========================================
+  */
+
+  &__caps {
+    bottom: 0;
     height:300px;
-    margin-top: 20px;
-    background-size: contain;
-    background-repeat: no-repeat;
+    left: 20;
+    position: absolute;
   }
 
+  /*
+    ========================================
+    Charaters Container
+    ========================================
+  */
+
   &__characters-section {
+    height:inherit;
     padding-top: 20px;
 
     h2 {
       margin-bottom: 10px;
+      display: inline-block;
     }
   }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  /*
+    ========================================
+    Charaters Wrapper
+    ========================================
+  */
 
   &__characters {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
-    height: 570px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 180px;
+    height: calc(100% - 100px);
     overflow: auto;
-    padding-right: 5px;
-  }
+    padding-right: 15px;
 
-  &__character-card a {
-    border: 1px solid rgb(212, 210, 210);
-    height: 180px;
-    display: grid;
-    grid-template-columns: 180px 1fr;
-
-    &:hover {
-      background-color: rgba(0, 0, 0, 0.05);
-      transition: background-color 800ms;
-
-      img {
-        transform: scale(1.2);
-        transition: transform 900ms;
-      }
+    /*
+      ========================================
+      Scrollbar Styles
+      ========================================
+    */
+  
+    &::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
     }
-
-    &:not(:hover) {
-      transition: background-color 800ms;
-      
-      img {
-        transition: transform 900ms;
-      }
+  
+    &::-webkit-scrollbar-track {
+      background: var(--white);
+      border-radius: 10px;
+      box-shadow: inset 10px 10px 10px 0px var(--scrollbar-thumb);
     }
-  }
-
-  &__character-img-container {
-    width: 180px;
-    overflow: hidden;
-    height: inherit;
-    
-    & > img {
-      height: inherit;
-    }
-  }
-
-  &__character-info {
-    padding: 15px 30px;
-    width: fit-content;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-
-    ul {
-      margin-top: 10px;
-      display: flex;
-
-      li:nth-of-type(-n+2)::after {
-        content:'•';
-        padding: 0 5px;
-      }
+  
+    &::-webkit-scrollbar-thumb {
+      background: linear-gradient(170deg, var(--gradient-blue) 27%, var(--gradient-green) 64%);
+      border-radius: 30px;
     }
   }
 }

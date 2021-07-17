@@ -5,11 +5,11 @@
 */
 
 .header {
-  border-bottom: 1px solid var(--header-bottom-color);
+  border-bottom: 1px solid var(--border);
   display: grid;
   grid-template-columns: 1fr 200px;
   height: 70px;
-  padding: 5px;
+  padding: 0 90px 0;
 
   &__content {
     display: flex;
@@ -17,47 +17,40 @@
   }
 
   &__logo {
-    height: 55px;
+    height: 70px;
   }
 
-  &__navigation {
-    font-size: 1.1rem;
+  /*
+    ========================================
+    Socials Container
+    ========================================
+  */
 
-    ul {
-      display: flex;
-
-      li {
-        margin: 0 5px;
-
-        &:not(:last-child)::after {
-          content: '/';
-          padding: 0 0 0 0.5rem;
-          display: inline-block;
-        }
-      }
-    }
-  }
-
-  &__author {
+  &__socials {
+    align-items: flex-end;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
 
-  &__socials {
+  &__social-list {
     display: flex;
     justify-content: center;
     padding: 0;
 
     li {
       font-size: 1.4rem;
-      margin: 0 5px;
       line-height: 1.4rem;
+      margin: 0 5px;
 
       svg {
         display: inline-block;
         vertical-align: middle;
       }
     }
+  }
+
+  &__social-icon {
+    color: var(--gradient-blue);
   }
 }

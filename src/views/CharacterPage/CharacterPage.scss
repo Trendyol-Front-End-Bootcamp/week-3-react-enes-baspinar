@@ -1,85 +1,128 @@
 /*
   ========================================
-  Content Container
+  Character Page Container
   ========================================
 */
 
 .character-content {
-  background-color: rgb(248, 248, 248);
+  background-color: var(--content-background);
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
   height: calc(100vh - 70px); // Full height - header height
 
   & > img {
-    position: absolute;
-    height: 500px;
-    top: calc((100vh - 430px) / 2);
-    left: 100px;
     border-radius: 50%;
+    height: 500px;
+    left: 100px;
+    position: absolute;
+    top: calc((100vh - 430px) / 2);
     z-index: 2;
   }
 
   &__title-section {
-    padding-left: 700px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    display: flex;
     align-items: flex-end;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    padding-bottom: 30px;
+    padding-left: 700px;
+    padding-right: 50px;
     position: relative;
   
     & > h2 {
+      color: var(--gradient-blue);
       font-size: 6.5rem;
+      line-height: 5.5rem;
+      text-shadow: 1px 0px 11px var(--gradient-green);
+      -webkit-text-stroke: 1px black;
     }
+
+    /*
+      ========================================
+      Return Characters Button
+      ========================================
+    */
 
     & > a {
-      position: absolute;
-      top: 20px;
-      right: 135px;
-
-      display: flex;
       align-items: center;
+      display: flex;
       gap: 5px;
+      padding-bottom: 5px;
+      position: absolute;
+      right: 135px;
+      top: 20px;
+
+      &:hover {
+        border-bottom: 2px solid;
+      }
     }
   }
 
+  /*
+    ========================================
+    Character Infos Container
+    ========================================
+  */
+
   &__info-section {
-    padding-left: 700px;
     display: grid;
     grid-template-columns: 2fr 2fr;
+    padding-left: 700px;
   }
 
+  /*
+    ========================================
+    Character Infos
+    ========================================
+  */
+
   &__infos {
+    align-content: flex-start;
+    display: flex;
+    flex-wrap: wrap;
     padding: 30px 10px 10px;
-    display: grid;
-    grid-template-columns: repeat(3, 33%);
-    grid-template-rows: 100px 100px;
+    row-gap: 20px;
 
     & > h3 {
       grid-column: 1 / 4;
     }
   }
 
+  /*
+    ========================================
+    Character Info
+    ========================================
+  */
+
   &__info {
+    height: min-content;
+    min-width: 50%;
     text-overflow: ellipsis;
     word-wrap: break-word;
 
-    &:last-child {
-      grid-column: 2 / span 2;
+    &:nth-last-of-type(-n+2) {
+      grid-column: 1 / span 3;
     }
 
-    & > h4 {
-      margin: 0;
-      font-weight: bold;
+    h4 {
       font-size: 1.5rem;
+      font-weight: bold;
+      margin: 0;
     }
 
-    & > h4:first-child {
-      color: rgba(0, 0, 0, 0.3);
+    &-name {
+      color: var(--info-title);
     }
   }
 
+  /*
+    ========================================
+    Character Last Episodes
+    ========================================
+  */
+
   &__last-episodes {
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-left: 1px solid var(--border);
     padding: 25px 10px 10px;
     text-align: center;
 
@@ -95,7 +138,16 @@
 
       & li {
         display: block;
+        font-size: 1.3rem;
       }
     }
+  }
+
+  &__episode-no {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: var(--info-title);
+    margin-right: 10px;
   }
 }

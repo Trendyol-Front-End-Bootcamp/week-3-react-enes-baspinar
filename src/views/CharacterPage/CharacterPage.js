@@ -4,81 +4,99 @@ import { Link } from "react-router-dom";
 import { FaArrowLeft } from "react-icons/fa";
 
 function CharacterPage(props) {
-  const { match, characterList } = props;
+  const { match } = props;
 
-  const [lastEpisodesName, setLastEpisodesName] = useState([]);
+  const [lastEpisodesNames, setLastEpisodesNames] = useState([]);
+  const [character, setCharacter] = useState({});
+  const [lastEpisodesIDs, setLastEpisodesIDs] = useState([]);
 
-  const characterName = match.params.name
-    .replace(/-/g, " ")
-    .replace(/\b\w/g, (l) => l.toUpperCase())
-    .replace(" A ", " a ")
-    .replace(" In ", " in ");
-  console.log(characterName);
-
-  const characterObj = characterList.find((chr) => chr.name === characterName);
-
-  console.log(characterObj);
-
-  useEffect(() => {
-    const lastEpisodesID = characterObj.episode
-      .map((link) => Number(link.match(/\d+/)[0]))
-      .sort((a, b) => b - a)
-      .slice(0, 5);
-
-    fetch(`https://rickandmortyapi.com/api/episode/${lastEpisodesID.join()}`)
+  useEffect(async () => {
+    fetch(`https://rickandmortyapi.com/api/character/${match.params.id}`)
       .then((response) => response.json())
+      .then((data) => {
+        setCharacter(data);
+        return data;
+      })
+      .then((chr) =>
+        chr.episode
+          .reverse()
+          .map((link) => Number(link.match(/\d+/)[0]))
+          .slice(0, 5)
+      )
+      .then((chrLastEpisodesIDs) => {
+        setLastEpisodesIDs(chrLastEpisodesIDs);
+        return chrLastEpisodesIDs;
+      })
+      .then((chrLastEpisodesIDs) =>
+        fetch(
+          `https://rickandmortyapi.com/api/episode/${chrLastEpisodesIDs.join()}`
+        )
+      )
+      .then((response2) => response2.json())
       .then((data) =>
-        setLastEpisodesName(Array.isArray(data) ? data.reverse() : [data])
-      );
+        Array.isArray(data) ? data.sort((a, b) => a - b).reverse() : Array(data)
+      )
+      .then((chrLastEpisodes) => setLastEpisodesNames(chrLastEpisodes));
   }, []);
 
-  return (
+  return !Object.keys(character).length ? (
+    <div />
+  ) : (
     <main className="character-content">
-      <img src={characterObj.image} alt="character" />
+      <img src={character.image} alt="character" />
       <section className="character-content__title-section">
         <Link to="/">
           <FaArrowLeft /> Return characters
         </Link>
-        <h2>{characterObj.name}</h2>
+        <h2>{character.name}</h2>
       </section>
       <section className="character-content__info-section">
         <div className="character-content__infos">
           <div className="character-content__info">
             <h4 className="character-content__info-name">Status:</h4>
             <h4 className="character-content__info-value">
-              {characterObj.status}
+              {character.status}
             </h4>
           </div>
           <div className="character-content__info">
             <h4 className="character-content__info-name">Gender:</h4>
             <h4 className="character-content__info-value">
-              {characterObj.gender}
+              {character.gender}
             </h4>
           </div>
           <div className="character-content__info">
             <h4 className="character-content__info-name">Species:</h4>
             <h4 className="character-content__info-value">
-              {characterObj.species}
+              {character.species}
             </h4>
           </div>
           <div className="character-content__info">
             <h4 className="character-content__info-name">Origin:</h4>
             <h4 className="character-content__info-value">
-              {characterObj.origin.name}
+              {character.origin.name === "unknown"
+                ? "Unknown"
+                : character.origin.name}
             </h4>
           </div>
           <div className="character-content__info">
             <h4 className="character-content__info-name">Location:</h4>
             <h4 className="character-content__info-value">
-              {characterObj.location.name}
+              {character.location.name}
             </h4>
           </div>
         </div>
         <ul className="character-content__last-episodes">
           <h3>Last Episodes</h3>
           <ul>
-            {lastEpisodesName.map((episode) => (
-              <li key={episode.id}>{episode.name}</li>
+            {lastEpisodesNames.map((episode) => (
+              <li key={episode.id}>
+                <span className="character-content__episode-no">
+                  {episode.id}.
+                </span>
+                <span className="character-content__episode-name">
+                  {episode.name}
+                </span>
+              </li>
             ))}
           </ul>
         </ul>

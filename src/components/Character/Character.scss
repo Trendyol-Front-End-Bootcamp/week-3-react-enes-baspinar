@@ -1,0 +1,72 @@
+/*
+  ========================================
+  Character
+  ========================================
+*/
+
+.characters-content {
+  &__character-card a {
+    border: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    height: 180px;
+
+    &:hover {
+      background-color: var(--character-card-hover);
+      transition: background-color 800ms;
+
+      img {
+        transform: scale(1.2);
+        transition: transform 1500ms;
+      }
+    }
+
+    &:not(:hover) {
+      transition: background-color 800ms;
+      
+      img {
+        transition: transform 1500ms;
+      }
+    }
+  }
+
+  /*
+    ========================================
+    Character Image Container
+    ========================================
+  */
+
+  &__character-img-container {
+    width: 180px;
+    overflow: hidden;
+    height: inherit;
+    
+    & > img {
+      height: inherit;
+    }
+  }
+
+  /*
+    ========================================
+    Character Info
+    ========================================
+  */
+
+  &__character-info {
+    padding: 15px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    ul {
+      margin-top: 10px;
+      display: flex;
+
+      li:nth-of-type(-n+2)::after {
+        content:'•';
+        padding: 0 5px;
+      }
+    }
+  }
+}

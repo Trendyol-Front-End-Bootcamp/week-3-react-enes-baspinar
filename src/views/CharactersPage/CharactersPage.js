@@ -2,14 +2,19 @@ import "./CharactersPage.scss";
 import React from "react";
 import FilterSection from "../../components/FilterSection/FilterSection";
 import Character from "../../components/Character/Character";
-
+import Pagination from "../../components/Pagination/Pagination";
 import FullListCaps from "../../assets/full-list-caps.png";
 import FilteredListCaps from "../../assets/filtered-list-caps.png";
 import EmptyListCaps from "../../assets/empty-list-caps.png";
 
-function CharactersPage({ characterList, setApiUrl }) {
+function CharactersPage({
+  characterList,
+  setApiUrl,
+  characterCount,
+  page,
+  setPage,
+}) {
   let pageCaps = null;
-  console.log(characterList);
 
   if (characterList === [] || characterList === undefined) {
     pageCaps = EmptyListCaps;
@@ -23,15 +28,18 @@ function CharactersPage({ characterList, setApiUrl }) {
     <main className="characters-content">
       <aside>
         <FilterSection setApiUrl={setApiUrl} />
-        <div
-          className="characters-content__caps-container"
-          style={{
-            backgroundImage: `url(${pageCaps})`,
-          }}
-        />
+        <img className="characters-content__caps" src={pageCaps} alt="" />
       </aside>
       <section className="characters-content__characters-section">
-        <h2>List of characters</h2>
+        <div className="characters-content__header">
+          <h2>List of characters</h2>
+          <Pagination
+            setApiUrl={setApiUrl}
+            characterCount={characterCount}
+            page={page}
+            setPage={setPage}
+          />
+        </div>
         <ul className="characters-content__characters">
           {!characterList ? (
             <div>The character was not found.</div>
@@ -39,6 +47,7 @@ function CharactersPage({ characterList, setApiUrl }) {
             characterList.map((character) => (
               <Character
                 key={character.id}
+                id={character.id}
                 characterList={characterList}
                 name={character.name}
                 status={character.status}

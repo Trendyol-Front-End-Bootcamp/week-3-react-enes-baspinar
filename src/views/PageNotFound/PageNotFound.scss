@@ -1,25 +1,46 @@
+/*
+  ========================================
+  404 Page Container
+  ========================================
+*/
+
 .not-found-content {
+  height: calc(100vh - 70px);
   position: relative;
-  height: calc(100vh - 70px); 
+
+  /*
+    ========================================
+    Rick And Morty Caps
+    ========================================
+  */
 
   & > img {
-    position: absolute;
-    height:300px;
-    bottom: 0px;
-    left: 30px;
     background-size: contain;
     background-repeat: no-repeat;
+    bottom: 0px;
+    height: 300px;
+    left: 30px;
+    position: absolute;
   }
 
   &__main {
-    height: inherit;
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
     flex-direction: column;
+    height: inherit;
+    justify-content: center;
+
+    /*
+      ========================================
+      404 Text
+      ========================================
+    */
 
     h2 {
+      background: -webkit-linear-gradient(var(--gradient-blue) 27%, var(--gradient-green) 64%);
+      background-clip: text;
       font-size: 20rem;
+      -webkit-text-fill-color: transparent;
     }
 
     p {
@@ -27,12 +48,17 @@
       text-align: center;
     }
 
-    a {
-      color: green;
+    /*
+      ========================================
+      Return Home Button
+      ========================================
+    */
 
+    a {
+      border-bottom: 3px solid;
+      
       &:hover {
-        color: darkgreen;
-        border-bottom: 3px solid;
+        border-bottom: 0;
       }
     }
   }
