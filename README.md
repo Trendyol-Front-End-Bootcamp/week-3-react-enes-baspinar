@@ -1,8 +1,8 @@
-# Rick and Morty Characters Wiki
+# React with Rick and Morty API - Trendyol Frontend Bootcamp Week 3
 
-The purpose of this project is to list, filter and show details of Rick and Morty characters by pulling them from API. It is a **React** project and built with **create-react-app**. While coding, **ESLint** and **Prettier** were used together with the **AirBnb style guide**.
+This project includes listing, filtering and showing details of Rick and Morty characters from API. It is a **React** project and built with **create-react-app**. While coding, **ESLint** and **Prettier** were used together with the **AirBnb style guide**.
 
-[Live](https://rickies-and-morties.netlify.app/characters) ( There are route problems caused by Netlify. If the app does not redirect itself, there may be a problem. )
+[API](https://rickandmortyapi.com/), [PREVIEW](https://rickies-and-morties.netlify.app/characters) ( There are route problems caused by Netlify. If the app does not redirect itself, there may be a problem.)  
 
 ## Installation
 
