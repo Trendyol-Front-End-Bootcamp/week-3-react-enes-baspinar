@@ -3,6 +3,7 @@ import React from "react";
 import FilterSection from "../../components/FilterSection/FilterSection";
 import Character from "../../components/Character/Character";
 import Pagination from "../../components/Pagination/Pagination";
+import PageCaps from "../../components/PageCaps/PageCaps";
 import FullListCaps from "../../assets/full-list-caps.png";
 import FilteredListCaps from "../../assets/filtered-list-caps.png";
 import EmptyListCaps from "../../assets/empty-list-caps.png";
@@ -29,7 +30,7 @@ function CharactersPage({
     <main className="characters-content">
       <aside>
         <FilterSection apiUrl={apiUrl} setApiUrl={setApiUrl} />
-        <img className="characters-content__caps" src={pageCaps} alt="" />
+        <PageCaps pageCaps={pageCaps} />
       </aside>
       <section className="characters-content__characters-section">
         <div className="characters-content__header">
